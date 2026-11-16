@@ -1,6 +1,6 @@
-# Bully: Scholarship Edition modding skill package
+# Bully: Scholarship Edition knowledge and modding skill package
 
-This package contains the Hermes skill `bully-se-modding`, its curated working references, and an offline snapshot of the community `RanggaBS/bully-scripting` documentation. It also points agents to the current DSL/DSS v16 Nexus function catalog and SimonBestia's format/model/action-tree documentation. Those external sources are linked and summarized with attribution rather than copied wholesale.
+This package contains the Hermes skill `bully-se-modding`, its curated working references, and an offline snapshot of the community `RanggaBS/bully-scripting` documentation. It includes sourced game-world knowledge (including Harrington House and PC ped models/spawning), plus an attributed platform-aware reference to community archive, string, audio, and asset-viewer tools. It links to the current DSL/DSS v16 Nexus function catalog, SimonBestia's format/model/action-tree documentation, and EdnessP's tools. External sources are linked and summarized with attribution rather than copied wholesale.
 
 ## Use in Hermes
 - For this profile, the skill is installed at `skills/gaming/bully-se-modding`.

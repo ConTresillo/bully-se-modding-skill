@@ -1,7 +1,7 @@
 ---
 name: bully-se-modding
-description: Use when making Lua mods for Bully Scholarship Edition.
-version: 0.1.0
+description: Use for Bully gameplay knowledge and PC modding.
+version: 0.3.2
 author: ConTresillo, Hermes Agent
 license: MIT
 platforms: [windows, linux, macos]
@@ -11,13 +11,15 @@ metadata:
     related_skills: [test-driven-development, systematic-debugging]
 ---
 
-# Bully: Scholarship Edition Modding
-Use the community Bully Scripting Docs and Derpy Script Loader (DSL) references to author, inspect, package, and debug PC mods. This is an evidence-driven guide, not a claim that the upstream docs are complete; check the exact loader/game version and confirm every API against its primary reference before relying on it.
+# Bully: Scholarship Edition Knowledge and Modding
+Use this bundle for *Bully* gameplay/lore questions and for designing, authoring, testing, and packaging PC mods. It combines sourced game-world knowledge with DSL/Lua modding references. The community scripting docs are incomplete and version-sensitive; verify current facts and every API against appropriate sources, and never claim in-game behavior without runtime verification.
 
 ## When to Use
-- Create, review, debug, or package a Bully: Scholarship Edition PC Lua script/DSL collection.
+- Answer researched questions about Bully: Scholarship Edition characters, cliques, missions, locations, mechanics, and canon behavior.
+- Design, create, review, debug, test, or package a Bully PC Lua/DSL mod.
 - Inspect game scripting functions, enums, model IDs, events, or DSL server/client behavior.
-- Do not assume this covers console editions, arbitrary binary patching, or rights to redistribute game assets.
+- Treat specific game-version differences and community-wiki claims as source-attributed evidence, not universal guarantees.
+- Do not assume this covers console modding, arbitrary binary patching, or rights to redistribute game assets.
 
 ## Prerequisites
 - Confirm the user's platform, Bully: Scholarship Edition build, DSL version, and intended mod type (DSL Lua collection, network script, base-game script replacement, or asset/archive mod).
@@ -29,7 +31,7 @@ Use the community Bully Scripting Docs and Derpy Script Loader (DSL) references 
 ## Procedure
 1. **Scope/version gate.** Identify the exact PC game build and DSL/DSS version. The release page currently lists v16; verify it live and inspect the installed loader's readme. The pinned community GitHub docs cover an older DSL-era snapshot, so never infer current compatibility from their DSL 10/11 notes. For each API, require the installed version to satisfy the current DSL & DSS Functions article and package readme.
 
-2. **Inspect before coding.** Read `references/quickstart-and-loader.md` and the relevant topic reference. Search the pinned upstream source for the exact function page, enum, or object ID. The source function indexes contain many placeholder pages; check the page body, not just its existence or index entry. If a page is a stub, say so and seek a second primary/community reference or a local runtime check—never invent a signature.
+2. **Research the game or API before making claims.** For lore/location/NPC questions, read `references/game-world-and-characters.md`, then search reputable game references/walkthroughs for the exact mission, chapter, and version. For code, read `references/quickstart-and-loader.md` and the relevant API reference. Search the pinned upstream source for the exact function, enum, or model ID; many pages are placeholders, so inspect the page body. If a source is incomplete, attribute the gap and seek another source or runtime check—never invent a signature or game fact.
 3. **Pick the least invasive format.** Prefer a DSL script collection for new Lua behavior. Use an existing script replacement or registered game file only when the task requires changing a base-game asset/script. Keep original game files untouched; recommend a backup and a reversible loader/VFS workflow.
 4. **Design the mod.** Define a concise behavior spec, collection ID/name, dependencies and minimum DSL version, lifecycle/thread plan, configuration keys, cleanup behavior, and failure/compatibility limits. Keep features in small files/modules with namespaced globals/events; avoid global monkey patches unless necessary and explicitly documented.
 5. **Implement with safe lifecycle.** For ordinary gameplay calls, follow the source's readiness guidance (`SystemIsReady`) and wait for valid entities after delays. Keep per-frame work bounded; yield using documented thread APIs. Make cleanup stop spawned threads/events and restore state. Read exact function docs for parameter/return semantics and nil/error behavior.
@@ -54,7 +56,9 @@ Use the community Bully Scripting Docs and Derpy Script Loader (DSL) references 
 - List separately: source-grounded checks, static checks, in-game checks, and anything not tested.
 
 ## References
-Load only the linked reference needed for the current task:
+Load only linked references relevant to the current task:
+- `references/game-world-and-characters.md` — research workflow plus Harrington House, mission occupants, Preppy model IDs, and NPC-spawn evidence.
+- `references/community-bully-file-tools.md` — source-attributed archive, string, hashing, lip-sync, and asset-viewer tool map, with strict platform boundaries.
 - `references/quickstart-and-loader.md` — installation boundary, collection layout, config and startup.
 - `references/lua-lifecycle.md` — script lifecycle, threads, readiness, shared state, rendering.
 - `references/networking-and-server.md` — client/server model, events, trust boundaries.
